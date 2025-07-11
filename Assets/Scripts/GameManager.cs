@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public GameObject nextButton;       // NEXT 버튼
     Image titleImage;                   // 이미지를 표시하고있는 Image 컴포넌트
 
+    // 점수추가
+    public GameObject scoreText;
+    public static int totalScore;
+    public int stageScore = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +30,8 @@ public class GameManager : MonoBehaviour
         // 버튼이벤트 등록
         nextButton.GetComponent<Button>().onClick.AddListener(HandleNextButton);
         restartButton.GetComponent<Button>().onClick.AddListener(HandleRestartButton);
+
+        UpdateScore();
     }
 
     // Update is called once per frame
@@ -40,6 +47,11 @@ public class GameManager : MonoBehaviour
             bt.interactable = false;
             mainImage.GetComponent<Image>().sprite = gameClearSpr;
             PlayerController.gameState = "gameend";
+
+            // 점수추가
+            totalScore += stageScore;
+            stageScore = 0;
+            UpdateScore();
         }
         else if (PlayerController.gameState == "gameover")
         {
@@ -55,7 +67,15 @@ public class GameManager : MonoBehaviour
         else if (PlayerController.gameState == "playing")
         {
             // 게임 중
-            // do nothing
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerController playerCnt = player.GetComponent<PlayerController>();
+            // 점수추가
+            if (playerCnt.score != 0)
+            {
+                stageScore += playerCnt.score;
+                playerCnt.score = 0;
+                UpdateScore();
+            }
         }
         else if (PlayerController.gameState == "gameend")
         {
@@ -91,5 +111,12 @@ public class GameManager : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
+    }
+
+    void UpdateScore()
+    {
+        // UI 업데이트하는 함수
+        int score = stageScore + totalScore;
+        scoreText.GetComponent<Text>().text = score.ToString();
     }
 }
