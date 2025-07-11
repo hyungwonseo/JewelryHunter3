@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
         Invoke("InactiveImage", 1.0f);
         // 버튼(패널)을 숨기기
         panel.SetActive(false);
+
+        // 버튼이벤트 등록
+        nextButton.GetComponent<Button>().onClick.AddListener(HandleNextButton);
     }
 
     // Update is called once per frame
