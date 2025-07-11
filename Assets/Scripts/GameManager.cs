@@ -71,6 +71,15 @@ public class GameManager : MonoBehaviour
 
     void HandleNextButton()
     {
-        
+        int currentScene = SceneManager.GetActiveScene().buildIndex; // ÇöÀç¾À ÀÎµ¦½º
+        int lastScene = SceneManager.sceneCountInBuildSettings - 1; // ¸¶Áö¸·¾À ÀÎµ¦½º
+        if (currentScene == lastScene)
+        {
+            // ÇöÀç¾ÀÀÌ ¸¶Áö¸·¾À
+            SceneManager.LoadScene(0); // Ã¹¹øÂ° ¾ÀÀ¸·Î µ¹¾Æ°¨
+        }else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
     }
 }
