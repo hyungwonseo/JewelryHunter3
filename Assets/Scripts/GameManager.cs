@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
         // 버튼이벤트 등록
         nextButton.GetComponent<Button>().onClick.AddListener(HandleNextButton);
+        restartButton.GetComponent<Button>().onClick.AddListener(HandleRestartButton);
     }
 
     // Update is called once per frame
@@ -84,5 +85,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(currentScene + 1);
         }
+    }
+
+    void HandleRestartButton()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
     }
 }
