@@ -10,13 +10,7 @@ public class ShellController : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, deleteTime); // 제거 설정
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }   
 
     void OnTriggerEnter2D(Collider2D collision)
     {
