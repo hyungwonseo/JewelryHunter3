@@ -2239,6 +2239,7 @@ GameObject:
   - component: {fileID: 1076405146}
   - component: {fileID: 1076405147}
   - component: {fileID: 1076405148}
+  - component: {fileID: 1076405149}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Dead
@@ -2376,6 +2377,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1076405149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076405143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c6b73289bf82345a329af4c3a7d0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  direction: left
+  range: 4
 --- !u!20 &1181962425 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1949997638897981232, guid: bbf81e77f90678d469c5a6e03cdb08da, type: 3}
